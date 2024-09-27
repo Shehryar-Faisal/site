@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Coming Soon</title>
+	<title>Coming Soon</ title>
 	<style>
 		body {
 			background-color: #000;
@@ -18,17 +18,20 @@
 			border: 1px solid #555;
 			border-radius: 10px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			animation: fade-in 2s forwards; /* Add animation to the container */
 		}
 		.coming-soon-header {
 			font-size: 36px;
 			font-weight: bold;
 			color: #fff;
 			text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			animation: slide-in 2s forwards; /* Add animation to the header */
 		}
 		.coming-soon-text {
 			font-size: 18px;
 			color: #ccc;
 			margin-bottom: 20px;
+			animation: fade-in 2s forwards; /* Add animation to the text */
 		}
 		.countdown-container {
 			margin-top: 20px;
@@ -38,9 +41,39 @@
 			font-weight: bold;
 			color: #fff;
 			margin-bottom: 10px;
+			animation: pulse 2s infinite; /* Add animation to the countdown */
 		}
 		.countdown span {
 			margin: 0 10px;
+		}
+
+		/* Animation keyframes */
+		@keyframes fade-in {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+		@keyframes slide-in {
+			0% {
+				transform: translateX(-100%);
+			}
+			100% {
+				transform: translateX(0);
+			}
+		}
+		@keyframes pulse {
+			0% {
+				transform: scale(0.9);
+			}
+			50% {
+				transform: scale(1.1);
+			}
+			100% {
+				transform: scale(0.9);
+			}
 		}
 	</style>
 </head>
