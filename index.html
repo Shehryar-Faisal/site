@@ -4,27 +4,43 @@
 	<title>Coming Soon</title>
 	<style>
 		body {
-			background-color: #f0f0f0;
+			background-color: #000;
 			font-family: Arial, sans-serif;
 			text-align: center;
+			margin: 0;
+			padding: 0;
 		}
 		.coming-soon-container {
 			width: 80%;
 			margin: 40px auto;
 			padding: 20px;
-			background-color: #fff;
-			border: 1px solid #ddd;
+			background-color: #333;
+			border: 1px solid #555;
 			border-radius: 10px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		}
 		.coming-soon-header {
 			font-size: 36px;
 			font-weight: bold;
-			color: #333;
+			color: #fff;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		}
 		.coming-soon-text {
 			font-size: 18px;
-			color: #666;
+			color: #ccc;
+			margin-bottom: 20px;
+		}
+		.countdown-container {
+			margin-top: 20px;
+		}
+		.countdown {
+			font-size: 24px;
+			font-weight: bold;
+			color: #fff;
+			margin-bottom: 10px;
+		}
+		.countdown span {
+			margin: 0 10px;
 		}
 	</style>
 </head>
@@ -32,6 +48,37 @@
 	<div class="coming-soon-container">
 		<h1 class="coming-soon-header">Coming Soon!</h1>
 		<p class="coming-soon-text">Our website is currently under construction. We'll be launching soon, so stay tuned for updates!</p>
+		<div class="countdown-container">
+			<p class="countdown">
+				<span id="days">00</span> days
+				<span id="hours">00</span> hours
+				<span id="minutes">00</span> minutes
+				<span id="seconds">00</span> seconds
+			</p>
+		</div>
 	</div>
+
+	<script>
+		// Set the launch date
+		var launchDate = new Date('2024-03-01T00:00:00.000Z');
+
+		// Update the countdown every second
+		setInterval(function() {
+			var now = new Date();
+			var timeRemaining = launchDate - now;
+
+			// Calculate the days, hours, minutes, and seconds
+			var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+			// Update the countdown display
+			document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+			document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+			document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+			document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+		}, 1000);
+	</script>
 </body>
 </html>
